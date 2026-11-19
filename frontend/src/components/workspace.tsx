@@ -1,0 +1,30 @@
+"use client";
+
+import { useCallback, useState } from "react";
+import { Feed } from "./feed";
+import { AccountForm } from "./account-form";
+import { Composer } from "./composer";
+import { Studio } from "./studio";
+
+export function Workspace() {
+  const [token, setToken] = useState("");
+  const [revision, setRevision] = useState(0);
+  const signOut = useCallback(() => setToken(""), []); //每次组件重新加载 就不会sign out了
+  if (!token) return <AccountForm onLogin={setToken} />;
+
+  return (
+    <section className="space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-slate-600">Signed in</p>
+        <button onClick={signOut}>Sign out</button>
+      </div>
+      <Composer
+        token={token}
+        onExpired={signOut}
+        onPublished={() => setRevision((value) => value + 1)}
+      />
+      <Studio token = {token} onPublished={() => setRevision ((value) => value + 1)} />
+      <Feed token={token} onExpired={signOut} revision={revision} />
+    </section>
+  );
+}

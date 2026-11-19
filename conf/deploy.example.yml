@@ -1,0 +1,13 @@
+# Copy this file to conf/deploy.yml and fill in real values.
+# conf/deploy.yml is git-ignored so credentials never reach GitHub.
+
+elasticsearch:
+  address: "http://<es-host>:9200"
+  username: "<es-username>"
+  password: "<es-password>"
+
+gcs:
+  bucket: "<gcs-bucket-name>"
+
+token:
+  secret: "<long-random-jwt-secret>"

@@ -1,0 +1,8 @@
+# Without this file, gcloud would reuse .gitignore and leave out
+# conf/deploy.yml, so the deployed app could not load its config.
+.gcloudignore
+.git
+.gitignore
+/frontend/
+.claude/
+.DS_Store

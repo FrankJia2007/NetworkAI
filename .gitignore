@@ -1,0 +1,7 @@
+# Real credentials — use conf/deploy.example.yml as the template
+conf/deploy.yml
+
+# Local env and editor/tool settings
+.env*
+.claude/settings.local.json
+.DS_Store
